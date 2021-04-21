@@ -6,6 +6,9 @@ Full-Featured Blog with Django web framework.
 
 ## Screenshots
 
+<img src="blog/static/images/home_view.png" width="300" height="150">
+
+<img src="blog/static/images/detail_post.png" width="350" height="150">
 
 ## Features
 - User Registration

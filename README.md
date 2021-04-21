@@ -1,6 +1,6 @@
 # Django Blog
 
-Full-Featured Blog with Django web framework.
+Featured Blog with Django web framework.
 
 ## Screenshots
 

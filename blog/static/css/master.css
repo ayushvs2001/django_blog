@@ -1,0 +1,83 @@
+.myfont{
+  font-family: 'Days One', sans-serif;
+  font-size: 1.5em;
+  margin-bottom: 10px;
+}
+
+.posttitle{
+  font-family: 'Days One', sans-serif;
+  font-size: 3em;
+  text-align: center;
+  text-shadow: 2px 2px 2px black;
+}
+
+.bigbrand{
+  font-size: 1.5em;
+}
+
+.navbar-nav > li{
+  padding-left:30px;
+  padding-right:30px;
+}
+
+.space{
+  padding-left:30px;
+  padding-right:30px;
+}
+
+.mysubtitle{
+  font-family: 'Days One', sans-serif;
+  font-size: 1.5em;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.right_me{
+  position: absolute;
+  right: 0px;
+}
+
+/* for delete button to delete comment */
+.at_right_top{
+   width: 30px;
+   height: 30px;
+   position: absolute;
+   right: 0;
+   top: 0;
+   transform: translate(0%,0%);
+}
+
+.postdate{
+  text-align: center;
+  font-weight : bold
+}
+
+.para_text{
+  font-family: 'Days One', sans-serif;
+  font-size: 1.5em;
+  margin-bottom: 10px;
+  margin-top:30px;
+}
+
+.btn_two{
+  position: absolute;
+  right: 0px;
+}
+
+.padding_card{
+  margin-top:10px;
+  text-shadow: 1px 0.5px 0.3px black;
+}
+
+.span{
+  line-height:100%;
+}
+
+.fa-heart{
+   font-size:1.8em;
+   text-shadow: 2px 4px 5px black;
+   position: relative;
+   -webkit-text-stroke-width: 1px;
+   -webkit-text-stroke-color: black;
+
+}

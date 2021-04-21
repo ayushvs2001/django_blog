@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h1 class='myfont' style='font-size:30px;'>Create post here</h1>
+<div class="container">
+  <form action="" method="POST">
+    {% csrf_token %}
+    <h5 class='myfont'>{{ form.as_p }}</h5>
+    <input type="submit" class="btn btn-primary" name="Submit" value="Submit">
+  </form>
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+{% if posts %}
+<div class="container">
+  {% for post in posts %}
+     <div class="card padding_card">
+        <h5 class="card-header myfont" style="color: black; background:skyblue;">By: {{post.author|title}}</h5>
+        <p class="right_me myfont"  style="font-size:14px; color:cyan; background:black;">Published on: {{post.publish_date|date:"d M Y"}}</p>
+        <div class="card-body">
+          <h2 class="card-title myfont" style="font-size:25px;"><a href="{% url 'detail' pk=post.id %}">{{post.title|title}}</a></h2>
+          <p class="card-text myfont">{{post.text|truncatechars:100}}</p>
+        </div>
+        {# <div class="card-footer myfont border-success" style="color: brown; background:skyblue;">kajsflkjaslfjalkjlFooter</div> #}
+        <div class="card-footer myfont" style="color: black; background:skyblue; margin-bottom: 0px;">
+           <small> <h4 style='color:red'>{{post.likes.count}} Like/s</h4></small>
+        </div>
+     </div>
+     <br>
+  {% empty %}
+  <h3>No POST!</3>
+  {% endfor %}
+</div>
+{% endif %}
+{% endblock %}

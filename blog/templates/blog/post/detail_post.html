@@ -1,0 +1,121 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <div class="container" id="con1">
+      <h1 class='posttitle loader'>{{post.title|title}}</h1>
+
+      <h3 class='right_me myfont'>By : {{post.author|title}}</h3>
+      {% if not post.publish_date %}
+           <a href="{% url 'post_publish' test_pk=post.id %}"><input type="button" class="btn btn-warning" name="Publish" value="Publish"> </a>
+      {% else %}
+         <div class="date postdate">
+            {{ post.publish_date }}
+         </div>
+      {% endif %}
+
+      <pre class='para_text myfont'>{{post.text|safe|linebreaksbr}}</pre>
+
+      <br><br>
+
+      <i class="fa fa-heart like-btn" aria-hidden:'true' post-id={{post.id}}></i>
+
+      {% if request.user.is_staff %}
+          <a href="{% url 'update_post1' pk=post.id %}"><button class="btn btn-primary" style="position: absolute; right: 55%; left:45%;">
+          <i class="fa fa-edit"></i> Update</button></a>
+
+          <a href="{% url 'delete_post' pk=post.id %}"><button class="btn btn-danger btn_two"><i class="fa fa-trash"></i> Delete</button></a>
+      {% endif %}
+
+  </div>
+
+<hr>
+  <h2  class="mysubtitle" >COMMENTS</h2>
+  <a href="{% url 'comment_create' pk=post.id %}"> <button  class="btn btn-primary right_me btn-info"><i class="fa fa-comment"></i> Create Comment</button></a>
+  <div class="container" id="con2">
+    {% for comment in  post.comment_fk.all %}
+        <div class="card" style="width: 18rem;">
+          <div class="card-body">
+            {# only author of comment or admin can delete the comment #}
+             {% if comment.author|safe == request.user|safe or request.user.is_staff  %}
+
+                   <button class="btn btn-danger at_right_top del-btn btn-sm" comment-id={{comment.id}}><i class="fa fa-trash"></i></button>
+                {# </form> #}
+             {% endif %}
+             <h3 class="card-title" >{{ comment.author }}</h3>
+             <p class="card-text">{{comment.text}}</p>
+          </div>
+        </div>
+      <br>
+      {% empty %}
+      <p>No comments!</p>
+   {% endfor %}
+  </div>
+{% endblock %}
+
+{% block j_script %}
+  <script>
+  //  change the color of icon
+  function changeColor(flag) {
+    let id = $(".like-btn").attr('post-id');
+    url = '/like/'+id+"/";
+    data1 = {"button_click": flag, csrfmiddlewaretoken:'{{ csrf_token }}'}
+    $.ajax({
+      method: "POST",
+      data: data1,
+      url:url,
+      dataType: 'json',
+      success: function (data2) {
+        like_icon = $("i").eq(0)
+        if (data2.liked)
+         {
+          console.log('user liked the post');
+          // Turn color of like icon to white
+          like_icon.removeClass("turnWhite");
+          like_icon.addClass("turnRed");
+          }
+         else{
+           console.log('user not liked the post');
+           // Turn color of like icon to red
+           like_icon.removeClass("turnRed");
+           like_icon.addClass("turnWhite");
+            }
+       }
+     });
+  }
+
+  // when page ready reload
+  jQuery(document).ready(function() {
+      // false shows user not click on icon
+      changeColor(0);
+  });
+
+   // icon to like post
+    $("#con1").on("click", ".like-btn", function () {
+        changeColor(1);
+    });
+
+     // button to delete comment
+    $("#con2").on("click", ".del-btn", function () {
+       let id = $(this).attr('comment-id');
+       current_comment = this;
+       url = "/comment_delete/"+id+"/"
+       data = {csrfmiddlewaretoken:'{{ csrf_token }}'}
+       $.ajax({
+         method:'POST',
+         url:url,
+         data:data,
+         dataType: 'json',
+         success: function (data) {
+         if (data.deleted)
+          {
+             $(current_comment).closest('.card').fadeOut();
+           }
+          else{
+            console.log('opertion unsuccesful');
+            }
+          }
+        });
+    });
+
+  </script>
+{% endblock %}

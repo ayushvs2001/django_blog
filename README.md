@@ -4,25 +4,25 @@ Full-Featured Blog with Django web framework.
 
 ## Screenshots
 
-### Post List
+#### Post List
 <img src="blog/static/images/home_view.png" width="400" height="200"> 
 
-### Detail View For Admin
+#### Detail View For Admin
 <img src="blog/static/images/detail_post.png" width="400" height="200">
 
-### Detail View  For Normal User
+#### Detail View  For Normal User
 <img src="blog/static/images/normal_user_view.png" width="400" height="200">
 
-### Unpublished Post
+#### Unpublished Post
 <img src="blog/static/images/unpublished_post.png" width="400" height="200">
 
-### Registration Page
+#### Registration Page
 <img src="blog/static/images/register.png" width="400" height="200">
 
-### New Post page
+#### New Post page
 <img src="blog/static/images/create_post.png" width="400" height="200">
 
-### Create Comment Page
+#### Create Comment Page
 <img src="blog/static/images/create_comment.png" width="400" height="200">
 
 

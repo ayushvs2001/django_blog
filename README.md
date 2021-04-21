@@ -7,14 +7,14 @@ Full-Featured Blog with Django web framework.
 ### Post List
 <img src="blog/static/images/home_view.png" width="400" height="200"> 
 
-### For admin
+### Detail View For Admin
 <img src="blog/static/images/detail_post.png" width="400" height="200">
 
-### For normal User
-<img src="blog/static/images/unpublished_post.png" width="400" height="200">
+### Detail View  For Normal User
+<img src="blog/static/images/normal_user_view.png" width="400" height="200">
 
 ### Unpublished Post
-<img src="blog/static/images/normal_user_view.png" width="400" height="200">
+<img src="blog/static/images/unpublished_post.png" width="400" height="200">
 
 ### Registration Page
 <img src="blog/static/images/register.png" width="400" height="200">

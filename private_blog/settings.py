@@ -21,7 +21,7 @@ TEMPLATES_DIR  = Path.joinpath(BASE_DIR, 'blog/templates/blog')
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '+!p#nc7&r-zni$3h$&w$ec_5=t^g!0a-8_l#zt^hgd_yf6j!a6'
+SECRET_KEY = '+!p#nc7&r-zni$3h$&w$ec_5=tfsadf^g!0a-8_l#zt^hgd_yf6j!a6'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -128,3 +128,18 @@ STATIC_DIR = Path.joinpath(BASE_DIR, 'static')
 STATICFILES_DIRS = [
     STATIC_DIR,
 ]
+
+
+########  SMTP Configuration ############
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+
+EMAIL_HOST = 'smtp.gmail.com'
+
+EMAIL_PORT = 587
+
+EMAIL_USE_TLS = True
+
+EMAIL_HOST_USER = 'your_email'
+
+EMAIL_HOST_PASSWORD = 'your_password'

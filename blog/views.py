@@ -23,23 +23,24 @@ from django.utils import timezone
 
 
 ###########  POST  ##############
-class PostListView(ListView, LoginRequiredMixin):   # list all the post
+class PostListView(LoginRequiredMixin, ListView):   # list all the post
     model = Post
     context_object_name = 'posts'
     template_name = 'index.html'
-    login_url = '/login/'
+    login_url = 'login'
 
     def get_queryset(self):
             return Post.objects.filter(publish_date__lte=timezone.now()).order_by('-publish_date')
 
 
-class PostDetailView(DetailView, LoginRequiredMixin):  # post detail
+class PostDetailView(LoginRequiredMixin,DetailView):  # post detail
+    login_url = 'login'
     model = Post
     template_name = 'post/detail_post.html'
     context_object_name = 'post'
 
 class PostCreateView(OnlyAdmin, CreateView):
-    login_url = '/login/'
+    login_url = 'login'
     form_class = PostForm
     model = Post
     template_name = 'post/create_post.html'
@@ -53,7 +54,7 @@ class PostCreateView(OnlyAdmin, CreateView):
 
 
 class PostUpdateView(OnlyAdmin, UpdateView):
-    login_url = '/login/'
+    login_url = 'login'
     form_class = PostForm
     model = Post
     template_name = 'post/update_post.html'
@@ -63,7 +64,7 @@ class PostUpdateView(OnlyAdmin, UpdateView):
 
 
 class PostDeleteView(OnlyAdmin, DeleteView):
-    login_url = '/login/'
+    login_url = 'login'
     model = Post
     template_name = 'post/delete_post.html'
     success_url = reverse_lazy('home')
@@ -81,7 +82,7 @@ class PostDeleteView(OnlyAdmin, DeleteView):
 
 
 class DraftListView(OnlyAdmin, ListView):   # list all the post
-      login_url = '/login/'
+      login_url = 'login'
       model = Post
       template_name = "post/post_draft_list.html"
       context_object_name = 'posts'
@@ -102,8 +103,8 @@ def post_publish(request, test_pk):
 
 ############## comment ###########
 
-class CommentCreateView(CreateView, LoginRequiredMixin):
-    login_url = '/login/'
+class CommentCreateView(LoginRequiredMixin, CreateView):
+    login_url = 'login'
     form_class = CommentForm
     model = Comment
     template_name = 'comment/create_comment.html'
@@ -116,7 +117,7 @@ class CommentCreateView(CreateView, LoginRequiredMixin):
 
 
 class CommentDeleteView(DeleteCommentMixin, DeleteView):
-    login_url = '/login/'
+    login_url = 'login'
     model = Comment
     # template_name = 'comment/delete_comment.html'
     context_object_name = "comment"

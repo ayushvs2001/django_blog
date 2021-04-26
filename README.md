@@ -33,4 +33,5 @@ Featured Blog with Django web framework.
 - Like post
 - Create Comments
 - Draft List For Unpublished Post
+- Password Reset
 
